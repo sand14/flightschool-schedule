@@ -1,5 +1,7 @@
 package com.sand14.flightschoolschedule.user;
 
+import com.sand14.flightschoolschedule.appointment.Appointment;
+import com.sand14.flightschoolschedule.appointment.AppointmentBooking;
 import com.sand14.flightschoolschedule.role.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,6 +41,12 @@ public class User implements UserDetails, Principal
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "student")
+    private List<AppointmentBooking> bookings;
+
+    @OneToMany(mappedBy = "instructor")
+    private List<Appointment> instructorAppointments;
 
     @CreatedDate
     @Column(updatable = false, nullable = false)

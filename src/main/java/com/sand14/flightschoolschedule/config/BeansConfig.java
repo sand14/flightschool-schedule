@@ -3,6 +3,7 @@ package com.sand14.flightschoolschedule.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -40,5 +41,10 @@ public class BeansConfig {
     @Bean
     public JavaMailSender javaMailSender() {
         return new JavaMailSenderImpl();
+    }
+
+    @Bean
+    public AuditorAware<Integer> auditorAware(){
+        return new ApplicationAuditAware();
     }
 }
