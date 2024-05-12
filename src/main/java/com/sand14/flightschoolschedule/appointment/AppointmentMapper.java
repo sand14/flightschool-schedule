@@ -26,10 +26,10 @@ public class AppointmentMapper {
                 .endTime(appointment.getEndTime())
                 .isAvailable(appointment.isAvailable())
                 .instructor(appointment.getInstructor().fullName())
-                .eligibleStudents(appointment.getEligibleStudentsNames()).build();
+                .build();
 
         if (appointment.getBookedStudent() != null) {
-            appointmentResponse.setBookedStudent(appointment.getBookedStudent().getStudent().fullName());
+            appointmentResponse.setBookedStudent(appointment.getBookedStudent().fullName());
         }
 
         return appointmentResponse;

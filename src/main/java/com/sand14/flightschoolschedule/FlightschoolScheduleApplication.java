@@ -24,6 +24,9 @@ public class FlightschoolScheduleApplication {
 			if (roleRepository.findByName("USER").isEmpty()){
 				roleRepository.save(Role.builder().name("USER").build());
 			}
+			if (roleRepository.findByName("INSTRUCTOR").isEmpty()){
+				roleRepository.save(Role.builder().name("INSTRUCTOR").build());
+			}
 		};
 	}
 }
