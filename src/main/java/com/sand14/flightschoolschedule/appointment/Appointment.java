@@ -10,10 +10,8 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Getter
 @Setter
@@ -27,22 +25,12 @@ public class Appointment extends BaseEntity {
     private Time endTime;
     private boolean isAvailable;
 
-    @OneToOne(mappedBy = "appointment")
-    private AppointmentBooking bookedStudent;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private User bookedStudent;
 
     @ManyToOne
     @JoinColumn(name = "instructor_id")
     private User instructor;
 
-    @ManyToMany
-    @JoinTable(
-            name = "schedule_eligible_students",
-            joinColumns = @JoinColumn(name = "appointment_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<User> eligibleStudents;
-
-    @Transient
-    public List<String> getEligibleStudentsNames() {
-        return this.eligibleStudents.stream().map(User::fullName).toList();
-    }
 }

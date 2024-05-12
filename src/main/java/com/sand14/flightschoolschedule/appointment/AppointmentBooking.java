@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Entity
@@ -29,5 +27,6 @@ public class AppointmentBooking extends BaseEntity {
     @JoinColumn(name = "student_id")
     private User student;
 
-    private LocalDateTime bookingTime;
+    private boolean answered;
+    private boolean isAccepted;
 }
