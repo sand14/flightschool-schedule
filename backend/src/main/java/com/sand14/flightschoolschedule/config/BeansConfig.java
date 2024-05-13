@@ -40,4 +40,9 @@ public class BeansConfig {
     public AuditorAware<Integer> auditorAware(){
         return new ApplicationAuditAware();
     }
+
+    @Bean
+    public CorsFilter corsFilter{
+        fina
+    }
 }

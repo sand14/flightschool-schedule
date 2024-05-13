@@ -19,18 +19,18 @@ public class AppointmentBookingController {
     private final AppointmentBookingRepository repository;
 
     @PostMapping("{appointmentid}")
-    public ResponseEntity<Integer> addAppointment(@PathVariable Integer appointmentid, Authentication connectedUser) {
+    public ResponseEntity<Integer> addBooking(@PathVariable Integer appointmentid, Authentication connectedUser) {
         return ResponseEntity.ok(service.bookAppointment(appointmentid, connectedUser));
     }
 
     @PostMapping("/accept/{appointmentbookingId}")
-    public ResponseEntity<?> acceptAppointment(@PathVariable Integer appointmentbookingId) {
+    public ResponseEntity<?> acceptBooking(@PathVariable Integer appointmentbookingId) {
         service.approveBooking(appointmentbookingId);
         return ResponseEntity.accepted().build();
     }
 
     @PostMapping("/deny/{appointmentbookingId}")
-    public ResponseEntity<?> denyAppointment(@PathVariable Integer appointmentbookingId) {
+    public ResponseEntity<?> denyBooking(@PathVariable Integer appointmentbookingId) {
         service.denyBooking(appointmentbookingId);
         return ResponseEntity.accepted().build();
     }
