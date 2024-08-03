@@ -22,6 +22,26 @@ services:
       - 1080:1080
       - 1025:1025
 
+  fssch-api:
+    container_name: fssch-api
+    image: fssch/fssch:1.0.0
+    ports:
+      - 8088:8088
+    networks:
+      - spring-fs
+    depends_on:
+      - postgres
+
+  fssch-ui:
+    container_name: fssch-ui
+    image: fssch/fssch-ui:1.0.0
+    ports:
+      - 4200:80
+    networks:
+      - spring-fs
+    depends_on:
+      - fssch-api
+
 networks:
   spring-fs:
     driver: bridge
